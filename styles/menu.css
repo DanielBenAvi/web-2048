@@ -1,0 +1,36 @@
+/* 
+    color palette:
+    main: #2ecc71
+    secondary: #3498db
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 3em;
+  color: #2ecc71;
+}
+
+.play {
+  background-color: #2ecc71;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.play:hover {
+  background-color: #27ae60;
+}

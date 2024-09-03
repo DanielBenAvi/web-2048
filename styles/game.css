@@ -1,0 +1,78 @@
+/* 
+    color palette:
+    main: #2ecc71
+    secondary: #3498db
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3em;
+  color: #2ecc71;
+  text-align: center;
+  margin: 24px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#score {
+  font-size: 2em;
+  color: #2ecc71;
+  margin-bottom: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  grid-gap: 10px;
+}
+
+.cell {
+  background-color: #2ecc71;
+  color: black;
+  text-align: center;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.move-left {
+  transform: translateX(-100%);
+}
+
+.move-right {
+  transform: translateX(100%);
+}
+
+.move-up {
+  transform: translateY(-100%);
+}
+
+.move-down {
+  transform: translateY(100%);
+}
+
+.new-tile {
+  animation: pop-in 0.2s ease-in-out;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
