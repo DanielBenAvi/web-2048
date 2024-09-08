@@ -7,6 +7,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
@@ -45,7 +46,25 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
+}
+
+/* new tile animation */
+.new-tile {
+  animation: pop-in 0.5s ease-in-out;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* move tile animation */
+.tile {
+  transition: transform 0.5s ease;
 }
 
 .move-left {
@@ -62,17 +81,4 @@ h1 {
 
 .move-down {
   transform: translateY(100%);
-}
-
-.new-tile {
-  animation: pop-in 0.2s ease-in-out;
-}
-
-@keyframes pop-in {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

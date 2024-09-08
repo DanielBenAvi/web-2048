@@ -91,18 +91,6 @@ function updateScore() {
   document.getElementById("score").innerHTML = "Score: " + score;
 }
 
-function animateTiles(animationClass) {
-  var tiles = document.getElementsByClassName("cell");
-  for (var i = 0; i < tiles.length; i++) {
-    tiles[i].classList.add(animationClass);
-  }
-  setTimeout(function () {
-    for (var i = 0; i < tiles.length; i++) {
-      tiles[i].classList.remove(animationClass);
-    }
-  }, 200); // Match the duration of the CSS transition
-}
-
 function handleKeyPress(event) {
   if (isGameOver()) {
     alert("Game Over!");
@@ -122,26 +110,28 @@ function handleKeyPress(event) {
 
   switch (event.key) {
     case "ArrowUp":
-      animateTiles("move-up");
       moveUp();
       break;
     case "ArrowDown":
-      animateTiles("move-down");
       moveDown();
       break;
     case "ArrowLeft":
-      animateTiles("move-left");
       moveLeft();
       break;
     case "ArrowRight":
-      animateTiles("move-right");
       moveRight();
       break;
   }
-  displayBoard();
   addRandomTile();
   displayBoard();
   updateScore();
+}
+
+function applyMoveAnimation(element, direction) {
+  element.classList.add(`move-${direction}`);
+  setTimeout(() => {
+    element.classList.remove(`move-${direction}`);
+  }, 300); // Match the duration of the CSS transition
 }
 
 function moveUp() {
@@ -157,10 +147,12 @@ function moveUp() {
 
         if (k >= 0 && board[k][j] == board[i][j]) {
           board[k][j] *= 2;
+          applyMoveAnimation(document.getElementById(`tile${i}${j}`), "up");
           board[i][j] = 0;
         } else {
           board[k + 1][j] = board[i][j];
           if (k + 1 != i) {
+            applyMoveAnimation(document.getElementById(`tile${i}${j}`), "up");
             board[i][j] = 0;
           }
         }
